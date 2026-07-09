@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git Cheat Sheet | راهنمای سریع گیت</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <!-- هدر -->
+        <header>
+            <div class="header-left">
+                <h1>🐙 Git Cheat Sheet</h1>
+                <p>راهنمای سریع دستورات گیت</p>
+            </div>
+            <div class="header-right">
+                <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+            </div>
+        </header>
+
+        <!-- جستجو -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 جستجوی دستورات..." oninput="searchCommands()" />
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" onclick="filterCommands('all')">همه</button>
+                <button class="filter-btn" data-filter="basic" onclick="filterCommands('basic')">مقدماتی</button>
+                <button class="filter-btn" data-filter="advanced" onclick="filterCommands('advanced')">پیشرفته</button>
+                <button class="filter-btn" data-filter="branch" onclick="filterCommands('branch')">شاخه‌ها</button>
+                <button class="filter-btn" data-filter="remote" onclick="filterCommands('remote')">ریموت</button>
+            </div>
+        </div>
+
+        <!-- لیست دستورات -->
+        <div id="commandsContainer" class="commands-grid">
+            <!-- توسط جاوااسکریپت پر می‌شه -->
+        </div>
+
+        <!-- آمار -->
+        <div class="stats">
+            <span id="totalCommands">۰</span> دستور پیدا شد
+        </div>
+
+        <!-- فوتر -->
+        <footer>
+            <p>ساخته شده با ❤️ | تمام دستورات با مثال</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
