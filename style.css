@@ -1,1 +1,358 @@
+/* ===== ریست ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0e17;
+    color: #e0e6ed;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* ===== تم روشن ===== */
+body.light {
+    background: #f0f2f5;
+    color: #1a1a2e;
+}
+
+body.light .container {
+    background: #ffffff;
+    border-color: #e0e0e0;
+}
+
+body.light .command-card {
+    background: #f8f9fa;
+    border-color: #e0e0e0;
+}
+
+body.light .command-card:hover {
+    background: #f0f0f0;
+}
+
+body.light .command-code {
+    background: #e8e8e8;
+    color: #1a1a2e;
+}
+
+body.light .search-box input {
+    background: #f8f9fa;
+    color: #1a1a2e;
+    border-color: #d0d0d0;
+}
+
+body.light .filter-btn {
+    background: #e8e8e8;
+    color: #1a1a2e;
+}
+
+body.light .filter-btn:hover,
+body.light .filter-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+body.light .stats {
+    color: #555;
+}
+
+/* ===== کانتینر ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #131b2e;
+    border-radius: 24px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+}
+
+/* ===== هدر ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 25px;
+}
+
+.header-left h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #60a5fa;
+}
+
+.header-left p {
+    color: #8892a8;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+#themeToggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e6ed;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#themeToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(20deg);
+}
+
+body.light #themeToggle {
+    background: #e8e8e8;
+    color: #1a1a2e;
+}
+
+/* ===== جستجو ===== */
+.search-box {
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    color: #e0e6ed;
+    font-size: 16px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+.search-box input::placeholder {
+    color: #64748b;
+}
+
+/* ===== فیلترها ===== */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    color: #8892a8;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.filter-btn:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: #e0e6ed;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* ===== گرید دستورات ===== */
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 16px;
+    margin-top: 5px;
+}
+
+/* ===== کارت دستور ===== */
+.command-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.command-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #2563eb;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.command-card:hover::before {
+    opacity: 1;
+}
+
+.command-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.command-card .badge {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.badge.basic {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.badge.advanced {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.badge.branch {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+
+.badge.remote {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.command-card .name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e0e6ed;
+}
+
+.command-card .description {
+    font-size: 14px;
+    color: #8892a8;
+    margin: 6px 0 10px 0;
+}
+
+.command-code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    color: #60a5fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: ltr;
+    text-align: left;
+    user-select: all;
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #8892a8;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.copy-btn:hover {
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+}
+
+.copy-btn.copied {
+    color: #22c55e;
+}
+
+/* ===== استاتس ===== */
+.stats {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.stats span {
+    color: #60a5fa;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* ===== فوتر ===== */
+footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    color: #475569;
+    font-size: 13px;
+}
+
+/* ===== حالت بدون نتیجه ===== */
+.no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 50px;
+    color: #64748b;
+}
+
+.no-results span {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* ===== پاسخگویی ===== */
+@media (max-width: 600px) {
+    .container {
+        padding: 16px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+        justify-content: center;
+    }
+
+    .command-code {
+        font-size: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
